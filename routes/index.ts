@@ -1,4 +1,6 @@
 import { Router } from "express"
+import { userRoute } from './user'
+import { petsRouter } from "./pets"
 
 const mainRouter = Router()
 
@@ -8,4 +10,4 @@ mainRouter.get('/', (req, res) => {
   })
 })
 
-export { mainRouter }
+export { mainRouter, userRoute, petsRouter }

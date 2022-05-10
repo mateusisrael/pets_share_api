@@ -1,16 +1,15 @@
 import express from 'express'
-import { mainRouter } from './routes'
+import { authenticateMiddleare } from './middlewares/'
+import { errorHandler } from './middlewares'
+import { userRoute, petsRouter } from './routes'
+// import "express-async-errors"
 
 const app = express()
 
-app.use('/', mainRouter)
 
-// app.route('/')
-//   .get((req, res) => {
-//     return res.status(200).json({
-//       "message": "Hello Express Server!"
-//     })
-//   })
+app.use('/api/users', authenticateMiddleare, userRoute)
+app.use('/api/pets', authenticateMiddleare, petsRouter)
+app.use(errorHandler)
 
 app.listen(3000, () => {
   console.log('Server running in http://localhost:3000')
