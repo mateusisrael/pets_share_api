@@ -3,7 +3,6 @@ TODO
 ====
 Conectar com banco de dados
 Criar tabela
-Criar rota de cadastro de usuário
 Criar rota de cadastro de pet
 
 
@@ -20,6 +19,7 @@ Criar middleware e lógica de autenticação:
 DONE
 ====
 
+Criar endpoint de signup encriptando a senha ao salvar
 Criar tabela FAKE de usuário
 Criar tabela FAKE de pets
 Criar manipulador de erros
