@@ -1,17 +1,12 @@
-import { Request, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 import { AppError } from "../errors"
 
-interface IAuthenticateMiddleware {
-  req?: Request,
-  res?: Response,
-  next? (): void  
-}
 
-const authenticateMiddleare = ({
-  req,
-  res,
-  next
-}: IAuthenticateMiddleware) => {
+const authenticateMiddleare = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
 
   try {
     console.log('User Authenticated')

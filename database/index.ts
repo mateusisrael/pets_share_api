@@ -1,14 +1,12 @@
-export const users = [
-  {
-    "id": "01-02",
-    "name": "Mateus Israel",
-    "password": "12345",
-    "pets": [
-      "pet01",
-      "pet02"
-    ]
-  }
-]
+interface IUser {
+  id: string,
+  username: string
+  name: string,
+  password: string,
+  pets?: Array<string>
+}
+
+export const users: Array<IUser> = []
 
 export const pets = [
   {

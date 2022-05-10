@@ -1,6 +1,7 @@
 import { Router } from "express"
 import { userRoute } from './user'
 import { petsRouter } from "./pets"
+import { signupRoute } from "./signup"
 
 const mainRouter = Router()
 
@@ -10,4 +11,4 @@ mainRouter.get('/', (req, res) => {
   })
 })
 
-export { mainRouter, userRoute, petsRouter }
+export { mainRouter, userRoute, petsRouter, signupRoute }

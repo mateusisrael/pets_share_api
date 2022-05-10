@@ -1,14 +1,15 @@
 import express from 'express'
-import { authenticateMiddleare } from './middlewares/'
-import { errorHandler } from './middlewares'
-import { userRoute, petsRouter } from './routes'
+import { authenticateMiddleare, errorHandler } from './middlewares/'
+import { userRoute, petsRouter, signupRoute } from './routes'
+import 'dotenv/config'
 // import "express-async-errors"
 
 const app = express()
 
-
+app.use(express.json())
 app.use('/api/users', authenticateMiddleare, userRoute)
 app.use('/api/pets', authenticateMiddleare, petsRouter)
+app.use('/api/signup', signupRoute)
 app.use(errorHandler)
 
 app.listen(3000, () => {
