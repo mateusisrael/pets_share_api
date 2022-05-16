@@ -1,0 +1,27 @@
+====
+TODO
+====
+Conectar com banco de dados
+Criar tabela
+Criar rota de cadastro de pet
+Criar testes na rota de usuário
+Criar testes na rota de pets
+
+=====
+DOING
+=====
+Retornar dados do pet quando o id do mesmo for passado na url
+
+====
+DONE
+====
+
+Criar endpoint de signup encriptando a senha ao salvar
+Criar tabela FAKE de usuário
+Criar tabela FAKE de pets
+Criar manipulador de erros
+Criar rota e controller de GET dos dados do usuário
+Criar rota e controller de GET dos dados do pet
+Criar middleware e lógica de autenticação:
+  - instalar dependências: bcrypt, uuid, jwt
+Retornar dados do usuário quando o id do mesmo for passado na url
