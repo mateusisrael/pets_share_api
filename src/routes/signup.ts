@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express"
 import { users as usersDB } from '../database'
 import { AppError } from "../errors"
-import { v4 as uuidV4 } from 'uuid'
 import { hash } from 'bcrypt'
+import { createUserController } from "../modules/users/useCases/createUser"
 
 
 const signupRoute = Router()
@@ -36,26 +36,30 @@ const checkIfUserAlreadyExists = (req: Request, res: Response, next: NextFunctio
   }
 }
 
-signupRoute.post('/', checkUserInfos, checkIfUserAlreadyExists, async (req: Request, res: Response) => {
-  const secret = process.env.SECRET
+// signupRoute.post('/', checkUserInfos, checkIfUserAlreadyExists, async (req: Request, res: Response) => {
+//   const secret = process.env.SECRET
 
-  try {
-    const { name, password, username } = req.body
+//   try {
+//     const { name, password, username } = req.body
 
-    const passwordHash = await hash(password, 8)
-    console.log(passwordHash)
-    const user = {
-      id: uuidV4(),
-      username,
-      name,
-      password: passwordHash
-    }
-    usersDB.push(user)
+//     const passwordHash = await hash(password, 8)
+//     console.log(passwordHash)
+//     const user = {
+//       id: uuidV4(),
+//       username,
+//       name,
+//       password: passwordHash
+//     }
+//     usersDB.push(user)
 
-    return res.status(201).send()
-  } catch (error) {
-    throw new Error()
-  }
+//     return res.status(201).send()
+//   } catch (error) {
+//     throw new Error()
+//   }
+// })
+
+signupRoute.post('/', async (req: Request, res: Response) => {
+  await createUserController().handle(req, res)
 })
 
 export { signupRoute }
