@@ -4,12 +4,12 @@ import { IUserRepository } from "./implementations/IUserRepository";
 
 export class UserRepository implements IUserRepository{
   create(user: IUserDTO): void {
-    throw new Error("Method not implemented.");
+    users.push(user)
   }
   list(): IUserDTO[] {
     return users
   }
-  findByName(username: string): void | IUserDTO {
-    throw new Error("Method not implemented.");
+  findByUsername(username: string): void | IUserDTO {
+    return users.find(( user ) => username === user.username)
   }
 }
