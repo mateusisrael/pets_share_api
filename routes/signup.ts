@@ -16,12 +16,10 @@ interface IUserData {
 const checkUserInfos = (req: Request, res: Response, next: NextFunction) => {
   try {
     const { username, name, password }: IUserData = req.body
-    console.log(typeof name, typeof password)
     if(!name || !password || !username) throw new Error()
     next()
   } catch (error) {
-    console.log('deu ruim')
-    throw new AppError('User or name values invalid', 400)
+    throw new AppError('Values invalid! Check name, username and password and try again!', 400)
   }
 }
 
@@ -43,7 +41,6 @@ signupRoute.post('/', checkUserInfos, checkIfUserAlreadyExists, async (req: Requ
     const { name, password, username } = req.body
 
     const passwordHash = await hash(password, 8)
-    console.log(passwordHash)
     const user = {
       id: uuidV4(),
       username,

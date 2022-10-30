@@ -8,7 +8,6 @@ userRoute.get('/:id?', (req: Request, res: Response) => {
   try{
     const userId = req.params?.id
     if(userId) {
-      console.log(userId)
       const user = users.find((user) => user.id === userId)
       if(user) return res.status(200).json({
         id: user.id,

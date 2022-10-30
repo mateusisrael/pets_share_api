@@ -4,7 +4,7 @@ import { userRoute, petsRouter, signupRoute, signinRoute } from './routes'
 import 'dotenv/config'
 import "express-async-errors"
 
-const app = express()
+export const app = express()
 
 app.use(express.json())
 app.use('/api/users', authenticateMiddleare, userRoute)

@@ -6,11 +6,12 @@ Criar tabela
 Criar rota de cadastro de pet
 Criar testes na rota de usuário
 Criar testes na rota de pets
+Retornar dados do pet quando o id do mesmo for passado na url
 
 =====
 DOING
 =====
-Retornar dados do pet quando o id do mesmo for passado na url
+Criar teste de signup
 
 ====
 DONE
