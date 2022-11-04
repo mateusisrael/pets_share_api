@@ -79,6 +79,65 @@ describe("[POSt]/signup", () => {
     })
 })
 
-// describe("[POST]/signin", () => {
-//   it("Should be able signin!")
-// })
+describe("[POST]/signin", () => {
+  // não deve ser possível logar com um usuário inexistente
+  // não deve ser possível logar com uma senha incorreta
+
+  it(
+    "Should not be able to signin if user passed does not exists",
+    async () => {
+      const signinResponse = await request(app)
+      .post("/api/signin")
+      .send({
+        username: "Xussa",
+        password: "ftftft"
+      })
+      .expect(400)
+      expect(signinResponse.body.message).toBeTruthy()
+    }
+  )
+
+  it(
+    "Should not be able to signin with incorrect password",
+    async () => {
+      await request(app)
+      .post("/api/signup")
+      .send({
+        name: "Francisco",
+        username: "Xicoz",
+        password: "fsfsfs"
+      })
+
+      const signinResponse = await request(app)
+      .post("/api/signin")
+      .send({
+        username: "Xicoz",
+        password: "123123"
+      })
+      .expect(400)
+      expect(signinResponse.body.message).toBeTruthy()
+    }
+  )
+
+  it(
+    "Should be able to signin!",
+    async () => {
+      const signupResponse = await request(app)
+      .post("/api/signup")
+      .send({
+        name: "Mateus",
+        username: "zircon",
+        password: "senhaforte123"
+      })
+      .expect(201)
+
+      const signinResponse = await request(app)
+      .post("/api/signin")
+      .send({
+        username: "zircon",
+        password: "senhaforte123"
+      })
+      .expect(200)
+    }  
+  )
+})

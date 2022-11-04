@@ -17,7 +17,7 @@ const chekceIfUserExists = (req, res, next) => {
     if(user === undefined) throw new Error()
     next()
   } catch (error) {
-    throw new AppError('Username incorrect', 400)
+    throw new AppError('Username or password incorrect', 400)
   }
 }
 
@@ -38,7 +38,7 @@ const checkUserPassword = (req, res, next) => {
     next()
 
   } catch (error) {
-    throw new AppError('Incorrect password', 400)
+    throw new AppError('Incorrect username or password', 400)
   }
 }
 
